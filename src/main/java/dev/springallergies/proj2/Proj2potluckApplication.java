@@ -1,4 +1,4 @@
-package dev.group2.proj2;
+package dev.springallergies.proj2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

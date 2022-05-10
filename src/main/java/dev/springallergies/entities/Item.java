@@ -1,4 +1,4 @@
-package dev.group2.proj2.entities;
+package dev.springallergies.entities;
 
 
 import lombok.Data;

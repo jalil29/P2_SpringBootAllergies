@@ -1,4 +1,4 @@
-package dev.group2.proj2;
+package dev.springallergies;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

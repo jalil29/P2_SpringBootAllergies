@@ -8,7 +8,7 @@
 		<version>2.6.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>dev.group2</groupId>
+	<groupId>dev.springallergies</groupId>
 	<artifactId>proj2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>proj2potluck</name>
