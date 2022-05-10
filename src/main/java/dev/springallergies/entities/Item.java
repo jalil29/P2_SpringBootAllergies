@@ -1,11 +1,11 @@
 package dev.springallergies.entities;
 
 
-import lombok.Data;
+
 
 import javax.persistence.*;
 
-@Data
+
 @Entity
 @Table(name="items")
 public class Item {
