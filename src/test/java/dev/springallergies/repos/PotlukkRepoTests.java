@@ -13,8 +13,6 @@ import java.util.List;
 @SpringBootTest
 class PotlukkRepoTests {
     @Autowired
-    private ItemRepo itemRepo;
-    @Autowired
     private UserRepo userRepo;
     @Autowired
     private PotlukkRepo potlukkRepo;
@@ -67,8 +65,8 @@ class PotlukkRepoTests {
         potlukk.setTime(newTime);
         potlukkRepo.save(potlukk);
 
-        Potlukk retrieved = potlukkRepo.getById(potlukk.getPid());
-        Assertions.assertEquals(newTime, potlukk.getTime());
+        Potlukk retrieved = potlukkRepo.findById(potlukk.getPid()).orElse(new Potlukk(0, BigInteger.ZERO, 0));
+        Assertions.assertEquals(newTime, retrieved.getTime());
 
         potlukkRepo.delete(potlukk);
         userRepo.delete(testUser);
