@@ -2,6 +2,7 @@ package dev.springallergies;
 
 import dev.springallergies.entities.User;
 import dev.springallergies.repos.UserRepo;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,8 +17,11 @@ public class UserRepoTests {
 
     @Test
     public void create_user_test(){
-        /*how to pass in new user with params using lombok, not sure on syntax short of writing out the entire constructor just not sure if theres some short hand*/
-        User newUser = new User();
+
+        User newUser = new User(0,"Dummy1","pass1234");
+        userRepo.save(newUser);
+        System.out.println(newUser);
+        Assertions.assertNotEquals(0, newUser.getUserId());
 
     }
 
