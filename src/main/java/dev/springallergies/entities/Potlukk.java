@@ -17,7 +17,7 @@ public class Potlukk {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="potlucks")
+    @Column(name="pid")
     private int pid;
 
     @Column(name="timeofevent")
