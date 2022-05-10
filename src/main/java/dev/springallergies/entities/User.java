@@ -1,9 +1,6 @@
 package dev.springallergies.entities;
 
-
-
 import javax.persistence.*;
-
 
 @Entity
 @Table(name="users")

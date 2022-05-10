@@ -1,4 +1,4 @@
-package dev.springallergies.services;
+package dev.springallergies.service;
 
 import dev.springallergies.entities.User;
 

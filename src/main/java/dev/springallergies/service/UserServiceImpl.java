@@ -1,13 +1,16 @@
-package dev.springallergies.services;
+package dev.springallergies.service;
 
 import dev.springallergies.entities.User;
 import dev.springallergies.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import javax.security.auth.login.AccountNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
+@Component
+@Service
 public class UserServiceImpl implements UserService{
 
     @Autowired
