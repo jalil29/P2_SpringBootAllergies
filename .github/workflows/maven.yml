@@ -23,6 +23,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
       env:
-        POSTGRESDB: ${{secrets.POSTGRESDB}}}
+        POSTGRESDB: ${{secrets.POSTGRESDB}}
     - name: Build with Maven
       run: mvn -B package --file pom.xml
