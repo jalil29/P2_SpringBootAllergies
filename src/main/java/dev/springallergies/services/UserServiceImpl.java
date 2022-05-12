@@ -1,4 +1,4 @@
-package dev.springallergies.service;
+package dev.springallergies.services;
 
 import dev.springallergies.entities.User;
 import dev.springallergies.repos.UserRepo;
@@ -31,8 +31,7 @@ public class UserServiceImpl implements UserService{
         Optional<User> possibleUser = this.userRepo.findById(userId);
         if(possibleUser.isPresent()){
             return possibleUser.get();
-        }else{
-            throw new RuntimeException("No account with that user id");
         }
+        return new User();
     }
 }

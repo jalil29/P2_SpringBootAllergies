@@ -1,7 +1,7 @@
 package dev.springallergies.controllers;
 
 import dev.springallergies.entities.User;
-import dev.springallergies.service.UserService;
+import dev.springallergies.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
