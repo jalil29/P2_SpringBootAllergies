@@ -12,8 +12,7 @@ import java.util.List;
 @Repository
 public interface ItemRepo extends JpaRepository<Item,Integer> {
 
-    List<Item> findItemByStatus (String Status);
-    List<Item> findItemBySupplier ( String supplier);
-    List<Item> findItemByPid (int pid);
-
+    List<Item> findByStatus(String Status);
+    List<Item> findBySupplier(String supplier);
+    List<Item> findByPid(int pid);
 }
