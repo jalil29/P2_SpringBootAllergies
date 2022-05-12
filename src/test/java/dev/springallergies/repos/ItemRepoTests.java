@@ -134,7 +134,7 @@ class ItemRepoTests {
         Item otherItem = new Item(0, "guestProvided", "Sandwiches", "A Person", newPotlukk.getPid());
         itemRepo.save(otherItem);
 
-        List<Item> retrieved = itemRepo.findItemByStatus("guestProvided");
+        List<Item> retrieved = itemRepo.findByStatus("guestProvided");
         Assertions.assertTrue(retrieved.size() > 1);
 
         itemRepo.delete(otherItem);
@@ -156,7 +156,7 @@ class ItemRepoTests {
         Item otherItem = new Item(0, "guestProvided", "Sandwiches", "A Person", newPotlukk.getPid());
         itemRepo.save(otherItem);
 
-        List<Item> retrieved = itemRepo.findItemBySupplier("A Person");
+        List<Item> retrieved = itemRepo.findBySupplier("A Person");
         Assertions.assertTrue(retrieved.size() > 1);
 
         itemRepo.delete(otherItem);
@@ -178,7 +178,7 @@ class ItemRepoTests {
         Item otherItem = new Item(0, "guestProvided", "Sandwiches", null, newPotlukk.getPid());
         itemRepo.save(otherItem);
 
-        List<Item> retrieved = itemRepo.findItemByPid(newPotlukk.getPid());
+        List<Item> retrieved = itemRepo.findByPid(newPotlukk.getPid());
         Assertions.assertTrue(retrieved.size() > 1);
 
         itemRepo.delete(otherItem);

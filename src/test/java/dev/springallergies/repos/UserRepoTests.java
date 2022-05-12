@@ -32,7 +32,7 @@ class UserRepoTests {
         User newUser = new User(0, "testname", "1234");
         userRepo.save(newUser);
 
-        List<User> retrieved = userRepo.findUserByUserName("testname");
+        List<User> retrieved = userRepo.findByUserName("testname");
         retrieved.stream().forEach(System.out::println);
         Assertions.assertTrue(retrieved.size() > 0);
 
