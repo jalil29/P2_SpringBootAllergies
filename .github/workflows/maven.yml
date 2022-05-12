@@ -26,3 +26,5 @@ jobs:
         POSTGRESDB: ${{secrets.POSTGRESDB}}
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+      env:
+        POSTGRESDB: ${{secrets.POSTGRESDB}}
