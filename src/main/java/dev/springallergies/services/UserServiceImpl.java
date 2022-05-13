@@ -16,10 +16,12 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepo userRepo;
 
+
     @Override
     public User registerUser(User user) {
         return this.userRepo.save(user);
     }
+
 
     @Override
     public List<User> retrieveUsers() {
