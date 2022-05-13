@@ -20,8 +20,6 @@ public class PotlukkController {
 
     @Autowired
     private PotluckService potluckService;
-    @Autowired
-    private ItemService itemService;
 
     @GetMapping("/potlucks")
     @ResponseBody
