@@ -43,10 +43,10 @@ class PotlukkServiceTests {
         Assertions.assertNotNull(received);
         Assertions.assertEquals(retrievedOtherPotlukk, received);
 
-        potluckService.deletePotluck(potlukk);
-        potluckService.deletePotluck(otherPotlukk);
-        userRepo.delete(user);
-        userRepo.delete(otherUser);
+        potluckService.deletePotluck(retrievedPotlukk);
+        potluckService.deletePotluck(retrievedOtherPotlukk);
+        userRepo.delete(retrievedUser);
+        userRepo.delete(retrievedOtherUser);
     }
 
     @Test
@@ -66,10 +66,10 @@ class PotlukkServiceTests {
         List<Potlukk> received = potluckService.fetchPotlucksByUserID(retrievedUser.getUserId());
         Assertions.assertTrue(received.size() > 0);
 
-        potluckService.deletePotluck(potlukk);
-        potluckService.deletePotluck(otherPotlukk);
-        userRepo.delete(user);
-        userRepo.delete(otherUser);
+        potluckService.deletePotluck(retrievedPotlukk);
+        potluckService.deletePotluck(retrievedOtherPotlukk);
+        userRepo.delete(retrievedUser);
+        userRepo.delete(retrievedOtherUser);
     }
 
     @Test
@@ -89,10 +89,10 @@ class PotlukkServiceTests {
         List<Potlukk> allPotlukks = potluckService.fetchPotlucks();
         Assertions.assertTrue(allPotlukks.size() > 1);
 
-        potluckService.deletePotluck(potlukk);
-        potluckService.deletePotluck(otherPotlukk);
-        userRepo.delete(user);
-        userRepo.delete(otherUser);
+        potluckService.deletePotluck(retrievedPotlukk);
+        potluckService.deletePotluck(retrievedOtherPotlukk);
+        userRepo.delete(retrievedUser);
+        userRepo.delete(retrievedOtherUser);
     }
 
     @Test
@@ -118,10 +118,10 @@ class PotlukkServiceTests {
         received = potluckService.updatePotluck(retrievedOtherPotlukk);
         Assertions.assertEquals(BigInteger.ZERO, received.getTime());
 
-        potluckService.deletePotluck(potlukk);
-        potluckService.deletePotluck(otherPotlukk);
-        userRepo.delete(user);
-        userRepo.delete(otherUser);
+        potluckService.deletePotluck(retrievedPotlukk);
+        potluckService.deletePotluck(retrievedOtherPotlukk);
+        userRepo.delete(retrievedUser);
+        userRepo.delete(retrievedOtherUser);
     }
 
     @Test
@@ -140,7 +140,7 @@ class PotlukkServiceTests {
 
         potluckService.deletePotluck(retrievedPotlukk);
         potluckService.deletePotluck(retrievedOtherPotlukk);
-        userRepo.delete(user);
-        userRepo.delete(otherUser);
+        userRepo.delete(retrievedUser);
+        userRepo.delete(retrievedOtherUser);
     }
 }
