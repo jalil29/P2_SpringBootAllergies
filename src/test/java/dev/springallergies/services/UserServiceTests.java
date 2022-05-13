@@ -42,6 +42,28 @@ class UserServiceTests {
     }
 
     @Test
+    void retrieve_user_by_username() {
+        User user = new User(0, "Testing", "123455");
+        User otherUser = new User(0, "Testign", "23456");
+
+        User retrievedUser = service.registerUser(user);
+        User retrievedOtherUser = service.registerUser(otherUser);
+
+        User foundUser = null;
+        List<User> foundUsers = service.retrieveUsersByUsername("Testign");
+        for(User u : foundUsers){
+            if (u.equals(retrievedOtherUser)) {
+                foundUser = u;
+            }
+        }
+
+        Assertions.assertTrue(foundUser != null);
+
+        repo.delete(retrievedUser);
+        repo.delete(retrievedOtherUser);
+    }
+    
+    @Test
     void get_user_by_id_tests() {
         User user = new User(0, "Testing", "123455");
         User otherUser = new User(0, "Testign", "23456");

@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface UserService {
     User registerUser(User user);
+    List<User> retrieveUsersByUsername(String username);
     List<User> retrieveUsers();
     User getUserByIdNo(int userId);
 }
