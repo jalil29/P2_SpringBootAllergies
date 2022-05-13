@@ -72,5 +72,5 @@ public class Logger {
     }
 
     @Pointcut("within(dev.springallergies.controllers..*)")
-    private void logJp(){};
+    private void logJP(){};
 }
