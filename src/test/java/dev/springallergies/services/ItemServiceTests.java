@@ -41,24 +41,24 @@ public class ItemServiceTests {
         Item item = new Item(0, "guestProvided", "Sandwich", "Person", retrievedPotlukk.getPid());
         Item otherItem = new Item(0, "ownerWanted", "Sandwich", null, retrievedOtherPotlukk.getPid());
 
-        Item receivedItem = itemService.updateItem(item);
-        Item receivedOtherItem = itemService.updateItem(otherItem);
+        Item retrievedItem = itemService.updateItem(item);
+        Item retrievedOtherItem = itemService.updateItem(otherItem);
 
-        Item received = itemService.fetchItemByItemId(receivedItem.getItemId());
+        Item received = itemService.fetchItemByItemId(retrievedItem.getItemId());
         Assertions.assertNotNull(received);
-        Assertions.assertEquals(received, receivedItem);
+        Assertions.assertEquals(received, retrievedItem);
 
-        received = itemService.fetchItemByItemId(receivedOtherItem.getItemId());
+        received = itemService.fetchItemByItemId(retrievedOtherItem.getItemId());
         Assertions.assertNotNull(received);
-        Assertions.assertEquals(received, receivedOtherItem);
+        Assertions.assertEquals(received, retrievedOtherItem);
 
 
-        itemService.deleteItem(item);
-        itemService.deleteItem(otherItem);
-        potluckService.deletePotluck(potlukk);
-        potluckService.deletePotluck(otherPotlukk);
-        userRepo.delete(user);
-        userRepo.delete(otherUser);
+        itemService.deleteItem(retrievedItem);
+        itemService.deleteItem(retrievedOtherItem);
+        potluckService.deletePotluck(retrievedPotlukk);
+        potluckService.deletePotluck(retrievedOtherPotlukk);
+        userRepo.delete(retrievedUser);
+        userRepo.delete(retrievedOtherUser);
     }
 
     @Test
@@ -78,18 +78,18 @@ public class ItemServiceTests {
         Item item = new Item(0, "guestProvided", "Sandwich", "Person", retrievedPotlukk.getPid());
         Item otherItem = new Item(0, "ownerWanted", "Sandwich", null, retrievedOtherPotlukk.getPid());
 
-        Item receivedItem = itemService.updateItem(item);
-        Item receivedOtherItem = itemService.updateItem(otherItem);
+        Item retrievedItem = itemService.updateItem(item);
+        Item retrievedOtherItem = itemService.updateItem(otherItem);
 
         List<Item> items = itemService.fetchItems();
         Assertions.assertTrue(items.size()>1);
 
-        itemService.deleteItem(item);
-        itemService.deleteItem(otherItem);
-        potluckService.deletePotluck(potlukk);
-        potluckService.deletePotluck(otherPotlukk);
-        userRepo.delete(user);
-        userRepo.delete(otherUser);
+        itemService.deleteItem(retrievedItem);
+        itemService.deleteItem(retrievedOtherItem);
+        potluckService.deletePotluck(retrievedPotlukk);
+        potluckService.deletePotluck(retrievedOtherPotlukk);
+        userRepo.delete(retrievedUser);
+        userRepo.delete(retrievedOtherUser);
     }
 
     @Test
@@ -109,8 +109,8 @@ public class ItemServiceTests {
         Item item = new Item(0, "guestProvided", "Sandwich", "Person", retrievedPotlukk.getPid());
         Item otherItem = new Item(0, "ownerWanted", "Sandwich", null, retrievedOtherPotlukk.getPid());
 
-        Item receivedItem = itemService.updateItem(item);
-        Item receivedOtherItem = itemService.updateItem(otherItem);
+        Item retrievedItem = itemService.updateItem(item);
+        Item retrievedOtherItem = itemService.updateItem(otherItem);
 
         List<Item> potlukkItems = itemService.fetchItemsByPid(retrievedPotlukk.getPid());
         Assertions.assertTrue(potlukkItems.size() > 0);
@@ -118,12 +118,12 @@ public class ItemServiceTests {
         potlukkItems = itemService.fetchItemsByPid(retrievedOtherPotlukk.getPid());
         Assertions.assertTrue(potlukkItems.size() > 0);
 
-        itemService.deleteItem(item);
-        itemService.deleteItem(otherItem);
-        potluckService.deletePotluck(potlukk);
-        potluckService.deletePotluck(otherPotlukk);
-        userRepo.delete(user);
-        userRepo.delete(otherUser);
+        itemService.deleteItem(retrievedItem);
+        itemService.deleteItem(retrievedOtherItem);
+        potluckService.deletePotluck(retrievedPotlukk);
+        potluckService.deletePotluck(retrievedOtherPotlukk);
+        userRepo.delete(retrievedUser);
+        userRepo.delete(retrievedOtherUser);
     }
 
     @Test
@@ -143,8 +143,8 @@ public class ItemServiceTests {
         Item item = new Item(0, "guestProvided", "Sandwich", "Person", retrievedPotlukk.getPid());
         Item otherItem = new Item(0, "ownerWanted", "Sandwich", null, retrievedOtherPotlukk.getPid());
 
-        Item receivedItem = itemService.updateItem(item);
-        Item receivedOtherItem = itemService.updateItem(otherItem);
+        Item retrievedItem = itemService.updateItem(item);
+        Item retrievedOtherItem = itemService.updateItem(otherItem);
 
         List<Item> status = itemService.fetchItemsByStatus("guestProvided");
         Assertions.assertTrue(status.size() > 0);
@@ -153,12 +153,12 @@ public class ItemServiceTests {
         Assertions.assertTrue(status.size() > 0);
 
 
-        itemService.deleteItem(item);
-        itemService.deleteItem(otherItem);
-        potluckService.deletePotluck(potlukk);
-        potluckService.deletePotluck(otherPotlukk);
-        userRepo.delete(user);
-        userRepo.delete(otherUser);
+        itemService.deleteItem(retrievedItem);
+        itemService.deleteItem(retrievedOtherItem);
+        potluckService.deletePotluck(retrievedPotlukk);
+        potluckService.deletePotluck(retrievedOtherPotlukk);
+        userRepo.delete(retrievedUser);
+        userRepo.delete(retrievedOtherUser);
     }
 
     @Test
@@ -178,18 +178,18 @@ public class ItemServiceTests {
         Item item = new Item(0, "guestProvided", "Sandwich", "Person", retrievedPotlukk.getPid());
         Item otherItem = new Item(0, "ownerWanted", "Sandwich", null, retrievedOtherPotlukk.getPid());
 
-        Item receivedItem = itemService.updateItem(item);
-        Item receivedOtherItem = itemService.updateItem(otherItem);
+        Item retrievedItem = itemService.updateItem(item);
+        Item retrievedOtherItem = itemService.updateItem(otherItem);
 
         List<Item> suppliedItems = itemService.fetchItemsBySupplier("Person");
         Assertions.assertTrue(suppliedItems.size() > 0);
 
-        itemService.deleteItem(item);
-        itemService.deleteItem(otherItem);
-        potluckService.deletePotluck(potlukk);
-        potluckService.deletePotluck(otherPotlukk);
-        userRepo.delete(user);
-        userRepo.delete(otherUser);
+        itemService.deleteItem(retrievedItem);
+        itemService.deleteItem(retrievedOtherItem);
+        potluckService.deletePotluck(retrievedPotlukk);
+        potluckService.deletePotluck(retrievedOtherPotlukk);
+        userRepo.delete(retrievedUser);
+        userRepo.delete(retrievedOtherUser);
     }
 
     @Test
@@ -209,29 +209,29 @@ public class ItemServiceTests {
         Item item = new Item(0, "guestProvided", "Sandwich", "Person", retrievedPotlukk.getPid());
         Item otherItem = new Item(0, "ownerWanted", "Sandwich", null, retrievedOtherPotlukk.getPid());
 
-        Item receivedItem = itemService.updateItem(item);
-        Item receivedOtherItem = itemService.updateItem(otherItem);
+        Item retrievedItem = itemService.updateItem(item);
+        Item retrievedOtherItem = itemService.updateItem(otherItem);
 
-        receivedItem.setStatus("ownerWanted");
-        receivedItem.setSupplier(null);
-        itemService.updateItem(receivedItem);
+        retrievedItem.setStatus("ownerWanted");
+        retrievedItem.setSupplier(null);
+        itemService.updateItem(retrievedItem);
 
-        Item received = itemService.fetchItemByItemId(receivedItem.getItemId());
-        Assertions.assertEquals(receivedItem, received);
+        Item received = itemService.fetchItemByItemId(retrievedItem.getItemId());
+        Assertions.assertEquals(retrievedItem, received);
 
-        receivedOtherItem.setStatus("guestProvided");
-        receivedOtherItem.setSupplier("Person");
-        itemService.updateItem(receivedOtherItem);
+        retrievedOtherItem.setStatus("guestProvided");
+        retrievedOtherItem.setSupplier("Person");
+        itemService.updateItem(retrievedOtherItem);
 
-        received = itemService.fetchItemByItemId(receivedOtherItem.getItemId());
-        Assertions.assertEquals(receivedOtherItem, received);
+        received = itemService.fetchItemByItemId(retrievedOtherItem.getItemId());
+        Assertions.assertEquals(retrievedOtherItem, received);
 
-        itemService.deleteItem(item);
-        itemService.deleteItem(otherItem);
-        potluckService.deletePotluck(potlukk);
-        potluckService.deletePotluck(otherPotlukk);
-        userRepo.delete(user);
-        userRepo.delete(otherUser);
+        itemService.deleteItem(retrievedItem);
+        itemService.deleteItem(retrievedOtherItem);
+        potluckService.deletePotluck(retrievedPotlukk);
+        potluckService.deletePotluck(retrievedOtherPotlukk);
+        userRepo.delete(retrievedUser);
+        userRepo.delete(retrievedOtherUser);
     }
 
     @Test
@@ -251,9 +251,16 @@ public class ItemServiceTests {
         Item item = new Item(0, "guestProvided", "Sandwich", "Person", retrievedPotlukk.getPid());
         Item otherItem = new Item(0, "ownerWanted", "Sandwich", null, retrievedOtherPotlukk.getPid());
 
-        itemService.deleteItem(item);
-        itemService.deleteItem(otherItem);
+        Item retrievedItem = itemService.updateItem(item);
+        Item retrievedOtherItem = itemService.updateItem(otherItem);
+
+        itemService.deleteItem(retrievedItem);
+        itemService.deleteItem(retrievedOtherItem);
         Assertions.assertEquals(0, itemService.fetchItemByItemId(item.getItemId()).getItemId());
         Assertions.assertEquals(0, itemService.fetchItemByItemId(otherItem.getItemId()).getItemId());
+        potluckService.deletePotluck(retrievedPotlukk);
+        potluckService.deletePotluck(retrievedOtherPotlukk);
+        userRepo.delete(retrievedUser);
+        userRepo.delete(retrievedOtherUser);
     }
 }

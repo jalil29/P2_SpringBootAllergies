@@ -58,15 +58,17 @@ class UserRepoTests {
     void update_users_test() {
         User newUser = new User(0, "testing", "1234");
 
-        userRepo.save(newUser);
+        User retrievedUser = userRepo.save(newUser);
 
-        System.out.println(newUser);
-        newUser.setUserName("TESTING");
+        System.out.println(retrievedUser);
+        retrievedUser.setUserName("TESTING");
 
-        userRepo.save(newUser);
+        userRepo.save(retrievedUser);
 
-        User retrieved = userRepo.findById(newUser.getUserId()).orElse(new User(0, "", ""));
-        Assertions.assertEquals(newUser.getUserName(), retrieved.getUserName());
+        User retrieved = userRepo.findById(retrievedUser.getUserId()).orElse(new User(0, "", ""));
+        System.out.println(retrieved);
+        Assertions.assertEquals(retrievedUser.getUserName(), retrieved.getUserName());
+        userRepo.delete(retrievedUser);
     }
 
     @Test
