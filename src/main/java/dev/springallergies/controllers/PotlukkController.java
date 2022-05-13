@@ -1,7 +1,6 @@
 package dev.springallergies.controllers;
 
 
-import dev.springallergies.entities.Item;
 import dev.springallergies.entities.Potlukk;
 import dev.springallergies.services.ItemService;
 import dev.springallergies.services.PotluckService;
@@ -15,7 +14,7 @@ import java.util.List;
 @CrossOrigin(origins="*", maxAge = 3600)
 @Component
 @Controller
-public class PotlukkControllers {
+public class PotlukkController {
 
     @Autowired
     private PotluckService potluckService;
@@ -27,6 +26,13 @@ public class PotlukkControllers {
     public List<Potlukk> retrievePotlucks(){
         List<Potlukk> potlukks= this.potluckService.fetchPotlucks();
         return potlukks;
+    }
+
+    @GetMapping("/potlucks/{creatorid}")
+    @ResponseBody
+    public List<Potlukk>  potluckksByCreator(@PathVariable int creatorid){
+         List<Potlukk> requestedPotlucks= this.potluckService.fetchPotlucksByUserID(creatorid);
+         return requestedPotlucks;
     }
 
 
