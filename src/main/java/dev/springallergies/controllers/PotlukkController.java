@@ -13,7 +13,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@CrossOrigin(origins="*", maxAge = 3600)
 @Component
 @Controller
 public class PotlukkController {
@@ -43,11 +42,13 @@ public class PotlukkController {
     }
 
     @DeleteMapping("/potlucks/{pid}")
-    public Boolean deletePotluck(@PathVariable int pid){
+    public void deletePotluck(@PathVariable int pid){
         Potlukk requestedPotluck = potluckService.fetchPotluckByPotID(pid);
-        if(requestedPotluck!=null){
-            potluckService.deletePotluck(requestedPotluck);
-            return true;
+        if(requestedPotluck.getPid() > 0){
+            if (potluckService.deletePotluck(requestedPotluck)) {
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
         }else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
