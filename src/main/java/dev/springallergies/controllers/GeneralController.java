@@ -3,10 +3,11 @@ package dev.springallergies.controllers;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+@CrossOrigin("https://main.d26a376lvucegi.amplifyapp.com/")
 @Component
 @Controller
 public class GeneralController implements ErrorController {

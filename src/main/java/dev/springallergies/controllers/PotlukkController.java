@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin("https://main.d26a376lvucegi.amplifyapp.com/")
 @Component
 @Controller
 public class PotlukkController {
