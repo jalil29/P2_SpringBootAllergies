@@ -35,6 +35,13 @@ public class PotlukkController {
          return requestedPotlucks;
     }
 
+    @GetMapping("/potlucks/{pid}")
+    @ResponseBody
+    public List<Potlukk>  potluckksByPid(@PathVariable int pid){
+        List<Potlukk> requestedPotlucks= this.potluckService.fetchPotlucksByUserID(pid);
+        return requestedPotlucks;
+    }
+
 
     @PostMapping("/potlucks")
     @ResponseBody
@@ -43,11 +50,12 @@ public class PotlukkController {
     }
 
     @DeleteMapping("/potlucks/{pid}")
-    public Boolean deletePotluck(@PathVariable int pid){
+    public boolean deletePotluck(@PathVariable int pid){
         Potlukk requestedPotluck = potluckService.fetchPotluckByPotID(pid);
         if(requestedPotluck!=null){
-            potluckService.deletePotluck(requestedPotluck);
-            return true;
+
+            return this.potluckService.deletePotluck((requestedPotluck));
+
         }else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
