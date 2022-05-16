@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin("")
 @Component
 @Controller
 public class PotlukkController {
@@ -49,9 +50,9 @@ public class PotlukkController {
         Potlukk requestedPotluck = potluckService.fetchPotluckByPotID(pid);
         if(requestedPotluck.getPid() > 0){
             if (potluckService.deletePotluck(requestedPotluck)) {
-                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+                throw new ResponseStatusException(HttpStatus.NO_CONTENT);
             }
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
         }else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }

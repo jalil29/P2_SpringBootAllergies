@@ -32,9 +32,10 @@ public class ItemController {
         Item receivedItem = itemService.fetchItemByItemId(id);
         if (receivedItem.getItemId() > 0) {
             if (this.itemService.deleteItem(receivedItem)) {
-                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+                throw new ResponseStatusException(HttpStatus.NO_CONTENT);
             }
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
