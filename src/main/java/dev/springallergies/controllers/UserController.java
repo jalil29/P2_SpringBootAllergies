@@ -13,7 +13,7 @@ import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@CrossOrigin("https://main.d26a376lvucegi.amplifyapp.com/")
 @Component
 @Controller
 public class UserController {

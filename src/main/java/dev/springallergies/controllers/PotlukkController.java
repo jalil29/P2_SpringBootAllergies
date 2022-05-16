@@ -15,7 +15,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin("")
+@CrossOrigin("https://main.d26a376lvucegi.amplifyapp.com/")
 @Component
 @Controller
 public class PotlukkController {
@@ -24,7 +24,7 @@ public class PotlukkController {
 
     @GetMapping("/potlucks")
     @ResponseBody
-    public List<Potlukk> retrievePotlucks(@RequestParam Integer creatorid, @RequestParam Integer pid) {
+    public List<Potlukk> retrievePotlucks(@RequestParam(required = false) Integer creatorid, @RequestParam(required = false) Integer pid) {
         if(creatorid == null && pid == null) {
             List<Potlukk> potlukks = this.potluckService.fetchPotlucks();
             return potlukks;
