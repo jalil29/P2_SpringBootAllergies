@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 
 @Component
 @Controller
-@CrossOrigin("*")
 public class UserController {
 
     @Autowired

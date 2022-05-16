@@ -13,7 +13,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@CrossOrigin(origins="*", maxAge = 3600)
 @Component
 @Controller
 public class PotlukkController {
