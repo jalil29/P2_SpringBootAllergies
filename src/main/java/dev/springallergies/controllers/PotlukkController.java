@@ -16,35 +16,33 @@ import java.util.List;
 @Component
 @Controller
 public class PotlukkController {
-
     @Autowired
     private PotluckService potluckService;
 
     @GetMapping("/potlucks")
     @ResponseBody
-    public List<Potlukk> retrievePotlucks(){
-        List<Potlukk> potlukks= this.potluckService.fetchPotlucks();
+    public List<Potlukk> retrievePotlucks() {
+        List<Potlukk> potlukks = this.potluckService.fetchPotlucks();
         return potlukks;
     }
 
     @GetMapping("/potlucks/{creatorid}")
     @ResponseBody
-    public List<Potlukk>  potluckksByCreator(@PathVariable int creatorid){
-         List<Potlukk> requestedPotlucks= this.potluckService.fetchPotlucksByUserID(creatorid);
-         return requestedPotlucks;
+    public List<Potlukk> potluckksByCreator(@PathVariable int creatorid) {
+        List<Potlukk> requestedPotlucks = this.potluckService.fetchPotlucksByUserID(creatorid);
+        return requestedPotlucks;
     }
 
     @GetMapping("/potlucks/{pid}")
     @ResponseBody
-    public List<Potlukk>  potluckksByPid(@PathVariable int pid){
-        List<Potlukk> requestedPotlucks= this.potluckService.fetchPotlucksByUserID(pid);
-        return requestedPotlucks;
+    public Potlukk potluckkByPid(@PathVariable int pid) {
+        Potlukk requestedPotluck = this.potluckService.fetchPotluckByPotID(pid);
+        return requestedPotluck;
     }
-
 
     @PostMapping("/potlucks")
     @ResponseBody
-    public Potlukk createPotlukk(@RequestBody Potlukk potlukk){
+    public Potlukk createPotlukk(@RequestBody Potlukk potlukk) {
         return this.potluckService.updatePotluck(potlukk);
     }
 
