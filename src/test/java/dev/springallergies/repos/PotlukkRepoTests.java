@@ -20,12 +20,11 @@ class PotlukkRepoTests {
     @Test
     void create_potlukk_test() {
         User testUser = new User(0, "test", "1234");
-        userRepo.save(testUser);
+        User retrievedUser = userRepo.save(testUser);
 
-        Potlukk potlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), testUser.getUserId());
-        potlukkRepo.save(potlukk);
+        Potlukk potlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), retrievedUser.getUserId());
+        potlukk = potlukkRepo.save(potlukk);
 
-        System.out.println(potlukk);
         Assertions.assertNotEquals(0, potlukk.getPid());
 
         userRepo.delete(testUser);
@@ -35,13 +34,13 @@ class PotlukkRepoTests {
     @Test
     void get_potlukks_test() {
         User testUser = new User(0, "test", "1234");
-        userRepo.save(testUser);
+        User retrievedUser = userRepo.save(testUser);
 
-        Potlukk potlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), testUser.getUserId());
-        potlukkRepo.save(potlukk);
+        Potlukk potlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), retrievedUser.getUserId());
+        potlukk = potlukkRepo.save(potlukk);
 
-        Potlukk otherPotlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), testUser.getUserId());
-        potlukkRepo.save(otherPotlukk);
+        Potlukk otherPotlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), retrievedUser.getUserId());
+        otherPotlukk = potlukkRepo.save(otherPotlukk);
 
         List<Potlukk> retrieved = potlukkRepo.findAll();
 
@@ -55,15 +54,15 @@ class PotlukkRepoTests {
     @Test
     void update_potlukks_test() {
         User testUser = new User(0, "test", "1234");
-        userRepo.save(testUser);
+        User retrievedUser = userRepo.save(testUser);
 
-        Potlukk potlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), testUser.getUserId());
-        potlukkRepo.save(potlukk);
+        Potlukk potlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), retrievedUser.getUserId());
+        potlukk = potlukkRepo.save(potlukk);
 
-        BigInteger newTime = BigInteger.valueOf(System.currentTimeMillis() - (7L*24L*60L*60L*1000L));
+        BigInteger newTime = BigInteger.valueOf(System.currentTimeMillis() - (7L * 24L * 60L * 60L * 1000L));
         // Remove ~a week from the current time.
         potlukk.setTime(newTime);
-        potlukkRepo.save(potlukk);
+        potlukk = potlukkRepo.save(potlukk);
 
         Potlukk retrieved = potlukkRepo.findById(potlukk.getPid()).orElse(new Potlukk(0, BigInteger.ZERO, 0));
         Assertions.assertEquals(newTime, retrieved.getTime());
@@ -75,10 +74,10 @@ class PotlukkRepoTests {
     @Test
     void delete_potlukks_test() {
         User testUser = new User(0, "test", "1234");
-        userRepo.save(testUser);
+        User retrievedUser = userRepo.save(testUser);
 
-        Potlukk potlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), testUser.getUserId());
-        potlukkRepo.save(potlukk);
+        Potlukk potlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), retrievedUser.getUserId());
+        potlukk = potlukkRepo.save(potlukk);
         Assertions.assertTrue(potlukkRepo.findById(potlukk.getPid()).isPresent());
 
         potlukkRepo.delete(potlukk);
@@ -91,15 +90,15 @@ class PotlukkRepoTests {
     @Test
     void find_potlukk_by_creator() {
         User testUser = new User(0, "test", "1234");
-        userRepo.save(testUser);
+        User retrievedUser = userRepo.save(testUser);
 
-        Potlukk potlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), testUser.getUserId());
-        potlukkRepo.save(potlukk);
+        Potlukk potlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), retrievedUser.getUserId());
+        potlukk = potlukkRepo.save(potlukk);
 
-        Potlukk otherPotlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), testUser.getUserId());
-        potlukkRepo.save(otherPotlukk);
+        Potlukk otherPotlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), retrievedUser.getUserId());
+        otherPotlukk = potlukkRepo.save(otherPotlukk);
 
-        List<Potlukk> retrieved = potlukkRepo.findByCreatorid(testUser.getUserId());
+        List<Potlukk> retrieved = potlukkRepo.findByCreatorid(retrievedUser.getUserId());
         Assertions.assertTrue(retrieved.size() > 1);
 
         potlukkRepo.delete(potlukk);
@@ -110,13 +109,13 @@ class PotlukkRepoTests {
     @Test
     void delete_potlukk_cascade_test() {
         User testUser = new User(0, "test", "1234");
-        userRepo.save(testUser);
+        User retrievedUser = userRepo.save(testUser);
 
-        Potlukk potlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), testUser.getUserId());
-        potlukkRepo.save(potlukk);
+        Potlukk potlukk = new Potlukk(0, BigInteger.valueOf(System.currentTimeMillis()), retrievedUser.getUserId());
+        potlukk = potlukkRepo.save(potlukk);
 
         userRepo.delete(testUser);
         Assertions.assertFalse(potlukkRepo.findById(potlukk.getPid()).isPresent());
-        Assertions.assertFalse(userRepo.findById(testUser.getUserId()).isPresent());
+        Assertions.assertFalse(userRepo.findById(retrievedUser.getUserId()).isPresent());
     }
 }

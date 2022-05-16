@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.websocket.server.PathParam;
@@ -23,7 +22,6 @@ public class ItemController {
     @PostMapping("/items")
     @ResponseBody
     public Item createItems(@RequestBody Item item){
-        System.out.println(item);
         return this.itemService.updateItem(item);
     }
 
@@ -40,20 +38,16 @@ public class ItemController {
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-
     }
 
     @GetMapping("/items")
-    @ResponseBody
-    public List<Item> retrievedItems(@RequestParam(required=false) String status){
-        System.out.println("test");
+    @ResponseBod
+    public List<Item> retrievedItems(@RequestParam String status){
         if(status == null) {
-            System.out.println("Fetch all");
             return this.itemService.fetchItems();
         }else if(status.equals("ownerWanted") || status.equals("guestProvided")){
             return this.itemService.fetchItemsByStatus(status);
-        }else {
-            System.out.println("None?");
+        }else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }

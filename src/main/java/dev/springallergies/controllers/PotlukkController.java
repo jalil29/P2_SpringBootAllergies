@@ -34,6 +34,13 @@ public class PotlukkController {
          return requestedPotlucks;
     }
 
+    @GetMapping("/potlucks/{pid}")
+    @ResponseBody
+    public List<Potlukk>  potluckksByPid(@PathVariable int pid){
+        List<Potlukk> requestedPotlucks= this.potluckService.fetchPotlucksByUserID(pid);
+        return requestedPotlucks;
+    }
+
 
     @PostMapping("/potlucks")
     @ResponseBody
@@ -52,11 +59,5 @@ public class PotlukkController {
         }else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-
-
-
     }
-
-
-
 }
