@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -21,23 +23,19 @@ public class PotlukkController {
 
     @GetMapping("/potlucks")
     @ResponseBody
-    public List<Potlukk> retrievePotlucks() {
-        List<Potlukk> potlukks = this.potluckService.fetchPotlucks();
-        return potlukks;
-    }
-
-    @GetMapping("/potlucks/{creatorid}")
-    @ResponseBody
-    public List<Potlukk> potluckksByCreator(@PathVariable int creatorid) {
-        List<Potlukk> requestedPotlucks = this.potluckService.fetchPotlucksByUserID(creatorid);
-        return requestedPotlucks;
-    }
-
-    @GetMapping("/potlucks/{pid}")
-    @ResponseBody
-    public Potlukk potluckkByPid(@PathVariable int pid) {
-        Potlukk requestedPotluck = this.potluckService.fetchPotluckByPotID(pid);
-        return requestedPotluck;
+    public List<Potlukk> retrievePotlucks(@RequestParam Integer creatorid, @RequestParam Integer pid) {
+        if(creatorid == null && pid == null) {
+            List<Potlukk> potlukks = this.potluckService.fetchPotlucks();
+            return potlukks;
+        } else if (pid == null) {
+            List<Potlukk> requestedPotlucks = this.potluckService.fetchPotlucksByUserID(creatorid);
+            return requestedPotlucks;
+        } else {
+            List<Potlukk> requestedPotluck = new ArrayList();
+            requestedPotluck.add(
+            this.potluckService.fetchPotluckByPotID(pid));
+            return requestedPotluck;
+        }
     }
 
     @PostMapping("/potlucks")
