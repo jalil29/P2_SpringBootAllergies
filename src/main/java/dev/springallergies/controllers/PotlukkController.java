@@ -47,13 +47,14 @@ public class PotlukkController {
     }
 
     @DeleteMapping("/potlucks/{pid}")
-    public boolean deletePotluck(@PathVariable int pid) {
+    public void deletePotluck(@PathVariable int pid){
         Potlukk requestedPotluck = potluckService.fetchPotluckByPotID(pid);
-        if (requestedPotluck != null) {
-
-            return this.potluckService.deletePotluck((requestedPotluck));
-
-        } else {
+        if(requestedPotluck.getPid() > 0){
+            if (potluckService.deletePotluck(requestedPotluck)) {
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+        }else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }

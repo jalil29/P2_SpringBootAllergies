@@ -28,8 +28,16 @@ public class ItemController {
 
     @DeleteMapping("/items/{id}")
     @ResponseBody
-    public boolean deleteItems(@PathVariable int id){
-        return this.itemService.deleteItem(itemService.fetchItemByItemId(id));
+    public void deleteItems(@PathVariable int id){
+        Item receivedItem = itemService.fetchItemByItemId(id);
+        if (receivedItem.getItemId() > 0) {
+            if (this.itemService.deleteItem(receivedItem)) {
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/items")

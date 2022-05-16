@@ -24,7 +24,6 @@ public class UserController {
     @PostMapping("/login")
     @ResponseBody
     public UserDTO userLogin(@RequestBody LoginDTO userInfo) {
-        System.out.println(userInfo);
         List<User> retrieved = userService.retrieveUsersByUsername(userInfo.getUsername());
         List<User> foundUsers = retrieved.stream().
                 filter(u -> u.getUserName().equals(userInfo.getUsername())
