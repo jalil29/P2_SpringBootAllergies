@@ -41,7 +41,7 @@ public class ItemController {
     }
 
     @GetMapping("/items")
-    @ResponseBod
+    @ResponseBody
     public List<Item> retrievedItems(@RequestParam String status){
         if(status == null) {
             return this.itemService.fetchItems();
