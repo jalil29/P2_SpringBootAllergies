@@ -1,4 +1,7 @@
 # Potlukk Back End
+## Front End
+The front end can be located at the following link
+https://github.com/jalil29/P2_SpringBootAllergies_FrontEnd
 
 ## Project Description
 Potlukk is an app that allows registered users to create potlucks.
@@ -48,7 +51,7 @@ This is the backend of Potlukk Project. Paths associated with this project retur
 
 ## Contributors
 
-> Eleanor Johnson
-> Jalil Ahmed
-> Michael Castro
-> Timothy Simmons
+* Eleanor Johnson
+* Jalil Ahmed
+* Michael Castro
+* Timothy Simmons
